@@ -23,17 +23,26 @@ const VandorSchema = new Schema({
     adress:{type: String},
     phone:{type: String, required:true}, 
     email:{type: String, required:true}, 
+    salt: {type:String,required: true},
     password:{type: String, required:true}, 
     serviceAvaliable:{type: String, required:true}, 
     converImages:{type: [String]},
     rating: {type: Number},
     foods:[{
-        type: mongoose.SchemaType.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref:'food'
     }]
 },{
+    toJSON:{
+        transform(doc,ret){
+            delete ret.password;
+            delete ret.salt;
+            delete ret.__v;
+            delete ret.createdAT;
+        }
+    },
     timestamps:true
 });
 
-const Vandor =  mongoose.model<VandorD  oc>('vandor',VandorSchema);
-export { Vandor} 
+const Vandor =  mongoose.model<VandorDoc>('vandor',VandorSchema);
+export { Vandor}        

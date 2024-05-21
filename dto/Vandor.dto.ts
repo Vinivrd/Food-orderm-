@@ -1,10 +1,10 @@
 export interface CreateVandorInput{
-        name:String;
-        ownerName:String;
-        foodType:[String];
-        pincode:String;
-        adress:String;
-        phone: String;
-        email: String;
-        password: String;
+        name:string;
+        ownerName:string;
+        foodType:[stringtring];
+        pincode:string;
+        adress:string;
+        phone: string;
+        email: string;
+        password: string;
     }
